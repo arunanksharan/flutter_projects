@@ -8,9 +8,12 @@ class HomePage extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Image.asset(
-          'assets/images/quiz-logo.png',
-          width: 200,
+        Opacity(
+          opacity: 0.5,
+          child: Image.asset(
+            'assets/images/quiz-logo.png',
+            width: 200,
+          ),
         ),
         const SizedBox(height: 20),
         const Text(
