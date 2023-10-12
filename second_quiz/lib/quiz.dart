@@ -15,19 +15,19 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget? activeScreen;
+  var activeScreen = 'start-screen';
 
-  @override
-  void initState() {
-    activeScreen = StartScreen(
-      switchScreen,
-    );
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   activeScreen = StartScreen(
+  //     switchScreen,
+  //   );
+  //   super.initState();
+  // }
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = 'questions-screen';
     });
   }
 
@@ -39,14 +39,16 @@ class _QuizState extends State<Quiz> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: const [
-                Color.fromARGB(255, 26, 2, 80),
+                Color.fromARGB(255, 90, 30, 80),
                 Color.fromARGB(255, 45, 7, 98),
               ],
               begin: startAlignment,
               end: endAlignment,
             ),
           ),
-          child: activeScreen,
+          child: activeScreen == 'start-screen'
+              ? StartScreen(switchScreen)
+              : const QuestionsScreen(),
         ),
       ),
     );
